@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         File: task6_definition_lists.html
+         Task: 6 — Definition Lists
+               Elements: <dl>, <dt>, <dd>
+    ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6 – Definition Lists</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:       #f8f9fc;
+            --white:    #ffffff;
+            --ink:      #1c2333;
+            --blue:     #2563eb;
+            --lblue:    #dbeafe;
+            --border:   #e2e8f0;
+            --muted:    #64748b;
+            --green:    #059669;
+            --lgreen:   #d1fae5;
+            --purple:   #7c3aed;
+            --lpurple:  #ede9fe;
+            --orange:   #d97706;
+            --lorange:  #fef3c7;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        header {
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            text-align: center;
+        }
+        header .badge {
+            display: inline-block;
+            background: var(--lblue);
+            color: var(--blue);
+            border-radius: 20px;
+            padding: 0.25em 1em;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        header p {
+            color: var(--muted);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* ── Sections container ── */
+        .wrap { max-width: 900px; margin: 0 auto; }
+
+        /* ── Info box at top ── */
+        .info-box {
+            background: var(--lblue);
+            border-left: 4px solid var(--blue);
+            border-radius: 0 6px 6px 0;
+            padding: 1rem 1.2rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: #1e40af;
+        }
+        .info-box code {
+            background: rgba(37,99,235,0.12);
+            border-radius: 4px;
+            padding: 0.1em 0.4em;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ── Section headers ── */
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 2.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Definition List Cards ── */
+        .dl-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .dl-card-head {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .dl-card-body { padding: 1.2rem 1.4rem 1.4rem; }
+
+        /* Colour themes */
+        .blue-card   .dl-card-head { color: var(--blue);   background: var(--lblue);   }
+        .green-card  .dl-card-head { color: var(--green);  background: var(--lgreen);  }
+        .purple-card .dl-card-head { color: var(--purple); background: var(--lpurple); }
+        .orange-card .dl-card-head { color: var(--orange); background: var(--lorange); }
+
+        /* ── dl, dt, dd Styling ── */
+
+        /* Base definition list */
+        dl {
+            margin: 0;
+        }
+
+        /* Definition term */
+        dt {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        dt:first-child { margin-top: 0; }
+
+        /* Colour the dt marker per theme */
+        .blue-card   dt::before { content: '▶'; color: var(--blue);   font-size: 0.6rem; }
+        .green-card  dt::before { content: '▶'; color: var(--green);  font-size: 0.6rem; }
+        .purple-card dt::before { content: '▶'; color: var(--purple); font-size: 0.6rem; }
+        .orange-card dt::before { content: '▶'; color: var(--orange); font-size: 0.6rem; }
+
+        /* Definition description — indented below the term */
+        dd {
+            margin-left: 1.4rem;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.6;
+            padding-left: 0.6rem;
+            border-left: 2px solid var(--border);
+        }
+
+        /* ── Tag chips ── */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+        .tag {
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            padding: 0.2em 0.6em;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .tag-dl  { background: #e0f2fe; color: #0369a1; }
+        .tag-dt  { background: #fce7f3; color: #9d174d; }
+        .tag-dd  { background: #f0fdf4; color: #166534; }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Page Header ── -->
+    <header>
+        <span class="badge">Task 6</span>
+        <h1>Definition Lists</h1>
+        <p>Using <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code> elements</p>
+    </header>
+
+    <div class="wrap">
+
+        <!-- Info block explaining the three elements -->
+        <div class="info-box">
+            <strong>Three elements work together:</strong>
+            &nbsp;<code>&lt;dl&gt;</code> — the Definition List container &nbsp;|&nbsp;
+            <code>&lt;dt&gt;</code> — Definition Term (the word/phrase) &nbsp;|&nbsp;
+            <code>&lt;dd&gt;</code> — Definition Description (the explanation)
+        </div>
+
+        <!-- Tag chips reference -->
+        <div class="tags">
+            <span class="tag tag-dl">&lt;dl&gt; Definition List</span>
+            <span class="tag tag-dt">&lt;dt&gt; Definition Term</span>
+            <span class="tag tag-dd">&lt;dd&gt; Definition Description</span>
+        </div>
+
+        <!-- ══════════════════════════════════
+             Example 1 — Programming Terms
+        ═══════════════════════════════════════ -->
+        <p class="section-title">Example 1 — Programming Glossary</p>
+
+        <div class="dl-card blue-card">
+            <div class="dl-card-head">
+                Programming Terms &mdash; &lt;dl&gt; with &lt;dt&gt; &amp; &lt;dd&gt;
+            </div>
+            <div class="dl-card-body">
+
+                <!-- Definition list: programming terms -->
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language — the standard language used to create and structure web pages using elements and tags.</dd>
+
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets — a stylesheet language used to control the visual presentation and layout of HTML documents.</dd>
+
+                    <dt>JavaScript</dt>
+                    <dd>A lightweight, interpreted programming language that enables dynamic, interactive behaviour on web pages and in servers.</dd>
+
+                    <dt>PHP</dt>
+                    <dd>PHP: Hypertext Preprocessor — a widely-used open source server-side scripting language designed for web development.</dd>
+
+                    <dt>MySQL</dt>
+                    <dd>An open-source relational database management system based on Structured Query Language (SQL).</dd>
+                </dl>
+
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             Example 2 — Computer Science Terms
+        ═══════════════════════════════════════ -->
+        <p class="section-title">Example 2 — Computer Science Concepts</p>
+
+        <div class="dl-card green-card">
+            <div class="dl-card-head">
+                CS Concepts — multiple &lt;dd&gt; per &lt;dt&gt;
+            </div>
+            <div class="dl-card-body">
+
+                <!-- A dt can have more than one dd -->
+                <dl>
+                    <dt>Algorithm</dt>
+                    <dd>A step-by-step procedure for solving a problem or accomplishing a task.</dd>
+                    <dd>Examples: Bubble Sort, Binary Search, Dijkstra's shortest path.</dd>
+
+                    <dt>Data Structure</dt>
+                    <dd>A way of organising and storing data so it can be accessed and modified efficiently.</dd>
+                    <dd>Common types: Arrays, Linked Lists, Stacks, Queues, Trees, Graphs.</dd>
+
+                    <dt>Recursion</dt>
+                    <dd>A technique where a function calls itself in order to solve a problem by breaking it into smaller sub-problems.</dd>
+
+                    <dt>Abstraction</dt>
+                    <dd>Hiding complex implementation details and showing only the essential features of an object or system.</dd>
+                </dl>
+
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             Example 3 — Web Server Glossary
+        ═══════════════════════════════════════ -->
+        <p class="section-title">Example 3 — Web Server Glossary</p>
+
+        <div class="dl-card purple-card">
+            <div class="dl-card-head">
+                WAMP / XAMPP Terminology
+            </div>
+            <div class="dl-card-body">
+
+                <dl>
+                    <dt>WAMP</dt>
+                    <dd>Windows, Apache, MySQL, PHP — a local web server stack for Windows that lets developers build and test web applications offline.</dd>
+
+                    <dt>XAMPP</dt>
+                    <dd>Cross-platform Apache, MariaDB, PHP, Perl — a free, open-source local server environment available for Windows, Linux, and macOS.</dd>
+
+                    <dt>Apache</dt>
+                    <dd>A free, open-source HTTP web server software that serves web pages over the internet or a local network.</dd>
+
+                    <dt>localhost</dt>
+                    <dd>A hostname that refers to the current computer. Used to access web servers running locally via the browser (127.0.0.1).</dd>
+
+                    <dt>Virtual Host</dt>
+                    <dd>A configuration that allows a single Apache server to host multiple websites or domains on one machine.</dd>
+                </dl>
+
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             Example 4 — HTML Tag Reference
+        ═══════════════════════════════════════ -->
+        <p class="section-title">Example 4 — HTML Tags Quick Reference</p>
+
+        <div class="dl-card orange-card">
+            <div class="dl-card-head">
+                Common HTML Elements Defined
+            </div>
+            <div class="dl-card-body">
+
+                <dl>
+                    <dt>&lt;head&gt;</dt>
+                    <dd>Contains metadata about the document such as title, charset, styles, and links to external resources. Not displayed in the browser.</dd>
+
+                    <dt>&lt;body&gt;</dt>
+                    <dd>Contains all the visible content of the webpage including text, images, lists, links, and other HTML elements.</dd>
+
+                    <dt>&lt;img&gt;</dt>
+                    <dd>Embeds an image in a webpage. It is a void element and requires the src attribute to specify the image path.</dd>
+
+                    <dt>&lt;ol&gt; / &lt;ul&gt;</dt>
+                    <dd><code>&lt;ol&gt;</code> creates an ordered (numbered) list while <code>&lt;ul&gt;</code> creates an unordered (bulleted) list. Both contain <code>&lt;li&gt;</code> items.</dd>
+
+                    <dt>&lt;dl&gt;</dt>
+                    <dd>Creates a description/definition list. Must contain pairs of <code>&lt;dt&gt;</code> (term) and <code>&lt;dd&gt;</code> (description) elements.</dd>
+                </dl>
+
+            </div>
+        </div>
+
+    </div><!-- /wrap -->
+
+    <footer>
+        <p>Web Technology Lab &mdash; Definition Lists &mdash; Task 6</p>
+    </footer>
+
+</body>
+</html>

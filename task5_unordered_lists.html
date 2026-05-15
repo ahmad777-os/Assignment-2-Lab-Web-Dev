@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         File: task5_unordered_lists.html
+         Task: 5 — Unordered Lists
+               Bullet styles: disc, circle, square, none
+    ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5 – Unordered Lists</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream:  #fdf6ec;
+            --sand:   #e8dcc8;
+            --brown:  #4a3728;
+            --rust:   #b5451b;
+            --teal:   #1a7a6e;
+            --gold:   #c8900a;
+            --slate:  #334756;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--brown);
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            padding: 2.5rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* ── Decorative Header ── */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        header .ornament {
+            font-size: 1.4rem;
+            color: var(--gold);
+            letter-spacing: 0.5em;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            color: var(--brown);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        header .sub {
+            margin-top: 0.5rem;
+            color: var(--rust);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        .divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1rem auto;
+        }
+
+        /* ── Grid ── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(74,55,40,0.10),
+                        0 0 0 1px var(--sand);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 24px rgba(74,55,40,0.16), 0 0 0 1px var(--sand);
+        }
+
+        /* ── Card header band ── */
+        .card-head {
+            padding: 1rem 1.2rem 0.9rem;
+            position: relative;
+        }
+        .card-head h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #fff;
+        }
+        .card-head .attr-tag {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.75);
+            font-family: 'Courier New', monospace;
+            margin-top: 0.2rem;
+        }
+
+        /* Per-style header colours */
+        .disc-card   .card-head { background: var(--rust);  }
+        .circle-card .card-head { background: var(--teal);  }
+        .square-card .card-head { background: var(--slate); }
+        .none-card   .card-head { background: var(--gold);  }
+
+        /* ── Card Body ── */
+        .card-body {
+            padding: 1rem 1.4rem 1.4rem;
+        }
+        .desc {
+            font-size: 0.8rem;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        /* ── Unordered Lists ── */
+        ul {
+            padding-left: 1.6rem;
+            line-height: 2;
+            font-size: 0.9rem;
+            color: var(--brown);
+        }
+
+        /* DISC (default solid circle) */
+        ul.disc   { list-style-type: disc;   }
+        ul.disc li::marker   { color: var(--rust); }
+
+        /* CIRCLE (open circle outline) */
+        ul.circle { list-style-type: circle; }
+        ul.circle li::marker { color: var(--teal); }
+
+        /* SQUARE (filled square) */
+        ul.square { list-style-type: square; }
+        ul.square li::marker { color: var(--slate); }
+
+        /* NONE (no bullet at all) */
+        ul.none   { list-style-type: none; padding-left: 0.4rem; }
+
+        /* Custom prefix for "none" to show it's still a list */
+        ul.none li::before {
+            content: '— ';
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* ── Visual bullet preview chips ── */
+        .preview {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.72rem;
+            background: var(--cream);
+            border: 1px solid var(--sand);
+            border-radius: 20px;
+            padding: 0.2em 0.7em;
+            margin-bottom: 0.8rem;
+            color: #666;
+        }
+        .preview .bullet {
+            font-size: 1rem;
+            line-height: 1;
+        }
+        .disc-card   .preview .bullet { color: var(--rust);  }
+        .circle-card .preview .bullet { color: var(--teal);  }
+        .square-card .preview .bullet { color: var(--slate); }
+        .none-card   .preview .bullet { color: var(--gold);  }
+
+        footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.78rem;
+            margin-top: 3rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Page Header ── -->
+    <header>
+        <span class="ornament">✦ ✦ ✦</span>
+        <h1>Unordered Lists</h1>
+        <p class="sub">Task 5 — disc · circle · square · none</p>
+        <div class="divider"></div>
+    </header>
+
+    <!-- ── Four Cards Grid ── -->
+    <div class="grid">
+
+        <!-- ─────────────────────────────
+             Card 1 — list-style-type: disc
+        ───────────────────────────────── -->
+        <div class="card disc-card">
+            <div class="card-head">
+                <h2>Disc Bullets</h2>
+                <p class="attr-tag">list-style-type: disc</p>
+            </div>
+            <div class="card-body">
+                <p class="desc">
+                    <strong>Disc</strong> is the default bullet — a solid filled circle.
+                    Used in <code>&lt;ul style="list-style-type: disc"&gt;</code>.
+                </p>
+                <div class="preview">
+                    <span class="bullet">●</span> disc bullet
+                </div>
+
+                <!-- Unordered list with disc bullets -->
+                <ul class="disc">
+                    <li>HTML — Structure of web pages</li>
+                    <li>CSS — Styling and layout</li>
+                    <li>JavaScript — Interactivity</li>
+                    <li>PHP — Server-side scripting</li>
+                    <li>MySQL — Database management</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─────────────────────────────
+             Card 2 — list-style-type: circle
+        ───────────────────────────────── -->
+        <div class="card circle-card">
+            <div class="card-head">
+                <h2>Circle Bullets</h2>
+                <p class="attr-tag">list-style-type: circle</p>
+            </div>
+            <div class="card-body">
+                <p class="desc">
+                    <strong>Circle</strong> renders an open, hollow circle outline.
+                    Often used for nested second-level lists.
+                </p>
+                <div class="preview">
+                    <span class="bullet">○</span> circle bullet
+                </div>
+
+                <!-- Unordered list with circle bullets -->
+                <ul class="circle">
+                    <li>Operating Systems</li>
+                    <li>Computer Networks</li>
+                    <li>Software Engineering</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Data Structures</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─────────────────────────────
+             Card 3 — list-style-type: square
+        ───────────────────────────────── -->
+        <div class="card square-card">
+            <div class="card-head">
+                <h2>Square Bullets</h2>
+                <p class="attr-tag">list-style-type: square</p>
+            </div>
+            <div class="card-body">
+                <p class="desc">
+                    <strong>Square</strong> uses a solid filled square marker.
+                    Gives a bolder, more structured look to lists.
+                </p>
+                <div class="preview">
+                    <span class="bullet">■</span> square bullet
+                </div>
+
+                <!-- Unordered list with square bullets -->
+                <ul class="square">
+                    <li>Introduction to WAMP</li>
+                    <li>Setting up XAMPP</li>
+                    <li>Creating virtual hosts</li>
+                    <li>PHP configuration</li>
+                    <li>MySQL database setup</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─────────────────────────────
+             Card 4 — list-style-type: none
+        ───────────────────────────────── -->
+        <div class="card none-card">
+            <div class="card-head">
+                <h2>No Bullets</h2>
+                <p class="attr-tag">list-style-type: none</p>
+            </div>
+            <div class="card-body">
+                <p class="desc">
+                    <strong>None</strong> removes all bullet markers entirely.
+                    Commonly used for navigation menus and custom-styled lists.
+                </p>
+                <div class="preview">
+                    <span class="bullet">∅</span> no marker
+                </div>
+
+                <!-- Unordered list with no bullets -->
+                <ul class="none">
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Services</li>
+                    <li>Portfolio</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+
+    </div><!-- /grid -->
+
+    <footer>
+        <p>Web Technology Lab &mdash; Unordered Lists &mdash; Task 5</p>
+    </footer>
+
+</body>
+</html>

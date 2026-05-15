@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         File: task3_ordered_lists.html
+         Task: 3 & 4 — Ordered Lists
+               Types: 1 (numbers), A, a, I, i
+               Start attribute: custom numbering
+    ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3 & 4 – Ordered Lists</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:      #0d1117;
+            --surface: #161b22;
+            --border:  #30363d;
+            --green:   #3fb950;
+            --blue:    #58a6ff;
+            --orange:  #f0883e;
+            --purple:  #bc8cff;
+            --red:     #ff7b72;
+            --text:    #e6edf3;
+            --muted:   #8b949e;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Courier New', monospace;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* ── Terminal-style Header ── */
+        header {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px 8px 0 0;
+            padding: 0.6rem 1.2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .dot-r { background: #ff5f57; }
+        .dot-y { background: #febc2e; }
+        .dot-g { background: #28c840; }
+        header .title-area { margin-left: 1rem; }
+        header h1 {
+            font-size: 1rem;
+            color: var(--green);
+            font-weight: 700;
+        }
+        header p { font-size: 0.75rem; color: var(--muted); }
+
+        /* ── Grid Layout ── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        /* ── List Cards ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .card-head {
+            padding: 0.7rem 1rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-body { padding: 1rem 1.2rem 1.2rem; }
+
+        /* ── Colour accents per type ── */
+        .num  .card-head { color: var(--blue);   border-left: 3px solid var(--blue);   }
+        .upc  .card-head { color: var(--green);  border-left: 3px solid var(--green);  }
+        .lwc  .card-head { color: var(--orange); border-left: 3px solid var(--orange); }
+        .rom  .card-head { color: var(--purple); border-left: 3px solid var(--purple); }
+        .sta  .card-head { color: var(--red);    border-left: 3px solid var(--red);    }
+
+        /* ── Ordered List Styling ── */
+        ol {
+            padding-left: 1.8rem;
+            line-height: 2;
+            font-size: 0.9rem;
+        }
+        ol li {
+            color: var(--text);
+            position: relative;
+        }
+        ol li::marker {
+            font-weight: 700;
+        }
+        .num  ol li::marker { color: var(--blue);   }
+        .upc  ol li::marker { color: var(--green);  }
+        .lwc  ol li::marker { color: var(--orange); }
+        .rom  ol li::marker { color: var(--purple); }
+        .sta  ol li::marker { color: var(--red);    }
+
+        /* ── Code Badge ── */
+        .badge {
+            display: inline-block;
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.2em 0.6em;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        /* ── Section Divider ── */
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.72rem;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Terminal Header ── -->
+    <header>
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <div class="title-area">
+            <h1>task3_ordered_lists.html</h1>
+            <p>Ordered Lists — type &amp; start attributes</p>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════
+         TASK 3 — Different type attributes
+    ═══════════════════════════════════════ -->
+    <p class="section-label">Task 3 — Ordered List Types</p>
+
+    <div class="grid">
+
+        <!-- 1. Numbers (default) — type="1" -->
+        <div class="card num">
+            <div class="card-head">Numbers &mdash; type="1"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="1"&gt;</span>
+
+                <!-- Numeric ordered list -->
+                <ol type="1">
+                    <li>HTML Fundamentals</li>
+                    <li>CSS Styling</li>
+                    <li>JavaScript Basics</li>
+                    <li>Responsive Design</li>
+                    <li>Web Hosting</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 2. Uppercase Letters — type="A" -->
+        <div class="card upc">
+            <div class="card-head">Uppercase Letters &mdash; type="A"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="A"&gt;</span>
+
+                <!-- Uppercase alphabetic ordered list -->
+                <ol type="A">
+                    <li>Python Programming</li>
+                    <li>Data Structures</li>
+                    <li>Algorithms</li>
+                    <li>Database Systems</li>
+                    <li>Operating Systems</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 3. Lowercase Letters — type="a" -->
+        <div class="card lwc">
+            <div class="card-head">Lowercase Letters &mdash; type="a"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="a"&gt;</span>
+
+                <!-- Lowercase alphabetic ordered list -->
+                <ol type="a">
+                    <li>Introduction</li>
+                    <li>Literature Review</li>
+                    <li>Methodology</li>
+                    <li>Results</li>
+                    <li>Conclusion</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 4. Uppercase Roman Numerals — type="I" -->
+        <div class="card rom">
+            <div class="card-head">Uppercase Roman — type="I"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="I"&gt;</span>
+
+                <!-- Uppercase Roman numeral ordered list -->
+                <ol type="I">
+                    <li>Chapter One</li>
+                    <li>Chapter Two</li>
+                    <li>Chapter Three</li>
+                    <li>Chapter Four</li>
+                    <li>Chapter Five</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 5. Lowercase Roman Numerals — type="i" -->
+        <div class="card rom" style="border-color:#5e4ea0;">
+            <div class="card-head" style="color:#c9aeff; border-left-color:#c9aeff;">
+                Lowercase Roman — type="i"
+            </div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="i"&gt;</span>
+
+                <!-- Lowercase Roman numeral ordered list -->
+                <ol type="i">
+                    <li>Sub-section one</li>
+                    <li>Sub-section two</li>
+                    <li>Sub-section three</li>
+                    <li>Sub-section four</li>
+                    <li>Sub-section five</li>
+                </ol>
+            </div>
+        </div>
+
+    </div><!-- /grid task 3 -->
+
+    <!-- ══════════════════════════════════
+         TASK 4 — start attribute
+    ═══════════════════════════════════════ -->
+    <p class="section-label">Task 4 — Custom Numbering with start Attribute</p>
+
+    <div class="grid">
+
+        <!-- start="5" — continuing a list from 5 -->
+        <div class="card sta">
+            <div class="card-head">Numbers — start="5"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="1" start="5"&gt;</span>
+
+                <!-- List starting at 5 -->
+                <ol type="1" start="5">
+                    <li>Network Protocols</li>
+                    <li>Cybersecurity Basics</li>
+                    <li>Cloud Computing</li>
+                    <li>Artificial Intelligence</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- start="10" — picking up mid-sequence -->
+        <div class="card sta">
+            <div class="card-head">Numbers — start="10"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="1" start="10"&gt;</span>
+
+                <!-- List starting at 10 -->
+                <ol type="1" start="10">
+                    <li>Advanced Algorithms</li>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Uppercase letters starting at D (start="4") -->
+        <div class="card upc">
+            <div class="card-head">Uppercase — type="A" start="4"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="A" start="4"&gt;</span>
+
+                <!-- Uppercase starting at D -->
+                <ol type="A" start="4">
+                    <li>Discussion</li>
+                    <li>Evaluation</li>
+                    <li>Future Work</li>
+                    <li>References</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Roman numerals starting at IV (start="4") -->
+        <div class="card rom">
+            <div class="card-head">Roman — type="I" start="4"</div>
+            <div class="card-body">
+                <span class="badge">&lt;ol type="I" start="4"&gt;</span>
+
+                <!-- Roman numerals starting at IV -->
+                <ol type="I" start="4">
+                    <li>Part Four</li>
+                    <li>Part Five</li>
+                    <li>Part Six</li>
+                    <li>Part Seven</li>
+                </ol>
+            </div>
+        </div>
+
+    </div><!-- /grid task 4 -->
+
+    <footer>
+        <p>Web Technology Lab &mdash; Ordered Lists &mdash; Task 3 &amp; 4</p>
+    </footer>
+
+</body>
+</html>

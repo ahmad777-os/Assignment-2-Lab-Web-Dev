@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         File: task1_images.html
+         Task: 1 & 2 — Displaying Images (External URL,
+               Same Folder, Another Folder) with
+               src, alt, width, height attributes
+    ============================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 & 2 – HTML Images</title>
+    <style>
+        /* ── Base Reset & Variables ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:    #1a1a2e;
+            --paper:  #f5f0e8;
+            --accent: #c0392b;
+            --gold:   #d4a017;
+            --rule:   #1a1a2e22;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        /* ── Newspaper-style Header ── */
+        header {
+            text-align: center;
+            border-top: 4px double var(--ink);
+            border-bottom: 4px double var(--ink);
+            padding: 1.2rem 0 1rem;
+            margin-bottom: 2.5rem;
+        }
+        header .kicker {
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        header h1 {
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        header .byline {
+            margin-top: 0.4rem;
+            font-size: 0.78rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* ── Section Cards ── */
+        .section {
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-left: 5px solid var(--accent);
+            border-radius: 2px;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 3px 3px 0 var(--ink);
+        }
+        .section h2 {
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section p {
+            font-size: 0.88rem;
+            color: #444;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ── Image Showcase ── */
+        .img-card {
+            display: inline-block;
+            background: var(--paper);
+            border: 1px solid var(--ink);
+            padding: 0.6rem;
+            margin: 0.5rem;
+            text-align: center;
+            vertical-align: top;
+            box-shadow: 2px 2px 0 var(--gold);
+        }
+        .img-card img {
+            display: block;
+        }
+        .img-card figcaption {
+            font-size: 0.72rem;
+            margin-top: 0.5rem;
+            color: #555;
+            font-style: italic;
+            max-width: 220px;
+        }
+
+        /* ── Code Tag ── */
+        code {
+            background: #f0ebe0;
+            border: 1px solid #d4c9a8;
+            padding: 0.15em 0.45em;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82em;
+            color: var(--accent);
+        }
+
+        /* ── Attribute Table ── */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+            margin-top: 1rem;
+        }
+        th {
+            background: var(--ink);
+            color: #fff;
+            padding: 0.5rem 0.8rem;
+            text-align: left;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        td {
+            padding: 0.45rem 0.8rem;
+            border-bottom: 1px solid var(--rule);
+        }
+        tr:nth-child(even) td { background: #f9f5ee; }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Page Header ── -->
+    <header>
+        <p class="kicker">Web Technology Lab · HTML Images</p>
+        <h1>Task 1 &amp; 2 — HTML Images</h1>
+        <p class="byline">src · alt · width · height · External URL · Same Folder · Another Folder</p>
+    </header>
+
+    <!-- ══════════════════════════════════════════
+         SECTION A — Image from External URL
+    ═══════════════════════════════════════════ -->
+    <div class="section">
+        <h2>A — Image from an External Website URL</h2>
+        <p>
+            The <code>src</code> attribute here points to a fully qualified
+            <code>https://</code> URL hosted on another server.
+            The <code>alt</code> text is shown if the image cannot load.
+        </p>
+
+        <figure class="img-card">
+            <!-- External URL image -->
+            <img src="https://www.w3schools.com/html/pic_trulli.jpg"
+                 alt="Trulli houses in Alberobello, Italy"
+                 width="220"
+                 height="160">
+            <figcaption>
+                <strong>External URL</strong><br>
+                src="https://www.w3schools.com/…/pic_trulli.jpg"<br>
+                width="220" height="160"
+            </figcaption>
+        </figure>
+
+        <figure class="img-card">
+            <!-- Another external image -->
+            <img src="https://www.w3schools.com/html/img_chania.jpg"
+                 alt="Scenic view of Chania, Greece"
+                 width="220"
+                 height="160">
+            <figcaption>
+                <strong>External URL</strong><br>
+                src="https://www.w3schools.com/…/img_chania.jpg"<br>
+                alt text shown on failure
+            </figcaption>
+        </figure>
+    </div><!-- /section A -->
+
+    <!-- ══════════════════════════════════════════
+         SECTION B — Image from Same Folder
+    ═══════════════════════════════════════════ -->
+    <div class="section">
+        <h2>B — Image from the Same Folder</h2>
+        <p>
+            When the image file lives in the <strong>same directory</strong>
+            as this HTML file, just use the filename as the <code>src</code>.
+            Place <code>flower.jpg</code> (or any image) next to this file.
+        </p>
+
+        <figure class="img-card">
+            <!-- Same-folder image — place flower.jpg beside this HTML file -->
+            <img src="flower.jpg"
+                 alt="A colorful flower from the same folder"
+                 width="200"
+                 height="150">
+            <figcaption>
+                <strong>Same Folder</strong><br>
+                src="flower.jpg"<br>
+                (relative path — no slash prefix)
+            </figcaption>
+        </figure>
+    </div><!-- /section B -->
+
+    <!-- ══════════════════════════════════════════
+         SECTION C — Image from Another Folder
+    ═══════════════════════════════════════════ -->
+    <div class="section">
+        <h2>C — Image from Another Folder in the Project</h2>
+        <p>
+            Use a relative path with the folder name to reach an image stored
+            in a <strong>sub-directory</strong> of your project.
+            Create a folder called <code>images/</code> and place
+            <code>landscape.jpg</code> inside it.
+        </p>
+
+        <figure class="img-card">
+            <!-- Image from a sub-folder called "images" -->
+            <img src="images/landscape.jpg"
+                 alt="A landscape photo stored in the images sub-folder"
+                 width="220"
+                 height="160">
+            <figcaption>
+                <strong>Sub-folder</strong><br>
+                src="images/landscape.jpg"<br>
+                Folder: <code>images/</code>
+            </figcaption>
+        </figure>
+
+        <figure class="img-card">
+            <!-- Going one level up then into another folder -->
+            <img src="../assets/banner.jpg"
+                 alt="Banner image one level up in assets folder"
+                 width="220"
+                 height="80">
+            <figcaption>
+                <strong>Parent Folder</strong><br>
+                src="../assets/banner.jpg"<br>
+                <code>../</code> moves up one directory
+            </figcaption>
+        </figure>
+    </div><!-- /section C -->
+
+    <!-- ══════════════════════════════════════════
+         SECTION D — Image Attributes Reference
+    ═══════════════════════════════════════════ -->
+    <div class="section">
+        <h2>D — Image Attributes Explained</h2>
+        <p>Every <code>&lt;img&gt;</code> tag supports the following core attributes:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Purpose</th>
+                    <th>Example Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- src attribute row -->
+                <tr>
+                    <td><code>src</code></td>
+                    <td>Specifies the path or URL of the image file (required)</td>
+                    <td><code>images/photo.jpg</code></td>
+                </tr>
+                <!-- alt attribute row -->
+                <tr>
+                    <td><code>alt</code></td>
+                    <td>Alternative text shown when image fails to load; also used by screen readers for accessibility</td>
+                    <td><code>A mountain sunset</code></td>
+                </tr>
+                <!-- width attribute row -->
+                <tr>
+                    <td><code>width</code></td>
+                    <td>Sets the display width of the image in pixels</td>
+                    <td><code>300</code></td>
+                </tr>
+                <!-- height attribute row -->
+                <tr>
+                    <td><code>height</code></td>
+                    <td>Sets the display height of the image in pixels</td>
+                    <td><code>200</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Demonstration: same image at different sizes -->
+        <p style="margin-top:1.4rem;">
+            <strong>Size Comparison</strong> — same external image with different
+            <code>width</code> &amp; <code>height</code> values:
+        </p>
+
+        <figure class="img-card">
+            <img src="https://www.w3schools.com/html/pic_trulli.jpg"
+                 alt="Trulli houses — small size"
+                 width="100"
+                 height="75">
+            <figcaption>width="100" height="75"</figcaption>
+        </figure>
+
+        <figure class="img-card">
+            <img src="https://www.w3schools.com/html/pic_trulli.jpg"
+                 alt="Trulli houses — medium size"
+                 width="180"
+                 height="130">
+            <figcaption>width="180" height="130"</figcaption>
+        </figure>
+
+        <figure class="img-card">
+            <img src="https://www.w3schools.com/html/pic_trulli.jpg"
+                 alt="Trulli houses — large size"
+                 width="260"
+                 height="195">
+            <figcaption>width="260" height="195"</figcaption>
+        </figure>
+    </div><!-- /section D -->
+
+    <footer>
+        <p>Web Technology Lab &mdash; HTML Images &mdash; Task 1 &amp; 2</p>
+    </footer>
+
+</body>
+</html>

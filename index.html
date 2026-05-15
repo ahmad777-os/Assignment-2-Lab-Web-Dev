@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 2 - HTML Tasks</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: -150px;
+      left: -120px;
+      filter: blur(50px);
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: rgba(59, 130, 246, 0.15);
+      border-radius: 50%;
+      bottom: -120px;
+      right: -120px;
+      filter: blur(50px);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #cbd5e1;
+      margin-bottom: 35px;
+      font-size: 1rem;
+    }
+
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .task-card {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 18px;
+      color: white;
+      transition: 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .task-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .arrow {
+      font-size: 1.2rem;
+      transition: 0.3s ease;
+    }
+
+    .task-card:hover .arrow {
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Assignment 2</h1>
+    <p>Select any task below to open the HTML file.</p>
+
+    <div class="task-grid">
+
+      <a href="task1or2_images.html" class="task-card">
+        Task 1 & 2 - Images
+        <span class="arrow">➜</span>
+      </a>
+
+      <a href="task3or4_ordered_lists.html" class="task-card">
+        Task 3 & 4 - Ordered Lists
+        <span class="arrow">➜</span>
+      </a>
+
+      <a href="task5_unordered_lists.html" class="task-card">
+        Task 5 - Unordered Lists
+        <span class="arrow">➜</span>
+      </a>
+
+      <a href="task6_definition_lists.html" class="task-card">
+        Task 6 - Definition Lists
+        <span class="arrow">➜</span>
+      </a>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
